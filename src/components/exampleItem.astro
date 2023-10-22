@@ -1,0 +1,18 @@
+---
+import VideoPlayer from "./videoPlayer.astro";
+import gato from "../assets/gato.mp4";
+interface Props {
+  title: string;
+  img?: string;
+  desc: string;
+}
+const { title, img, desc } = Astro.props;
+---
+
+<div
+  class="bg-gray-950 pt-5 pl-5 mt-5 text-white w-[82vw] md:w-[30vw] h-80 md:h-[44vh] rounded-xl hover:text-black hover:bg-white transition-all duration-500 ease-in-out hover:rotate-2"
+>
+  <h1 class="font-extrabold text-3xl">{title}</h1>
+  <h2>{desc}</h2>
+  <VideoPlayer video={gato} />
+</div>

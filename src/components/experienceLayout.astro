@@ -1,0 +1,18 @@
+---
+interface Props {
+  main: string;
+  description: string;
+}
+const { main, description } = Astro.props;
+---
+
+<article
+  class="flex flex-col justify-center text-center text-orange-500 outline outline-orange-500 outline-1 rounded-tl-[3vw] rounded-br-[3vw] w-60 h-24 left-24 mt-6 md:w-60 md:h-72 relative md:left-[27vw] hover:outline-black hover:bg-black hover:scale-110 transition-all duration-150 ease-in-out hover:text-white"
+>
+  <h1 class="text-5xl font-bold md:text-8xl">
+    {main}
+  </h1>
+  <h2 class="font-light mt-1 md:mt-5 text-xl">
+    {description}
+  </h2>
+</article>
