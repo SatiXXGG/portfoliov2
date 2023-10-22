@@ -7,4 +7,5 @@ export default defineConfig({
   integrations: [tailwind()],
   site: "https://satixxgg.github.io",
   base: "/portfoliov2",
+  output: "static"
 });
