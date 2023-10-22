@@ -8,13 +8,43 @@ import Layout from "../layouts/Layout.astro";
   <NavBar />
   <main class="flex flex-col items-center py-40">
     <div class="grid md:grid-cols-3 grid-cols-1 w-full h-full px-9 md:px-16">
-      <ExampleItem title="hello" desc="hello proyect" />
-      <ExampleItem title="hello" desc="hello proyect" />
-      <ExampleItem title="hello" desc="hello proyect" />
+      <ExampleItem
+        title="Dynamic Arms optimized"
+        desc="Dynamic moving arms and head Using IK and Motor6D"
+        vid="https://satixxgg.github.io/SatixXGG-portfolio-react/static/media/arms-video.ca8415911ebfb6ff2524.mp4"
+      />
+      <ExampleItem
+        title="Rounded menu style"
+        desc="Rounded menu with 4 options that can open by clicking it"
+        vid="https://satixxgg.github.io/SatixXGG-portfolio-react/static/media/round-menu.3202a3da2faaa7a0ad06.mp4"
+      />
+      <ExampleItem
+        title="Interaction system"
+        desc="Advanced customizable interaction system with cooldown"
+        vid="https://satixxgg.github.io/SatixXGG-portfolio-react/static/media/int-system.b8901d8ad465712225e9.mp4"
+      />
 
-      <ExampleItem title="hello" desc="hello proyect" />
-      <ExampleItem title="hello" desc="hello proyect" />
-      <ExampleItem title="hello" desc="hello proyect" />
+      <ExampleItem
+        title="GTA Style menu"
+        desc="Advanced customizable GTA menu with options to change everything"
+        vid="https://satixxgg.github.io/SatixXGG-portfolio-react/static/media/gta-menu.fb07a4bcabe0abd7176b.mp4"
+      />
+      <ExampleItem
+        title="Dynamic stamina bar"
+        desc="Advanced and dynamic stamina bar like Genshin Impact game"
+        vid="https://satixxgg.github.io/SatixXGG-portfolio-react/static/media/stamina-bar.7bc10d61f7b89c2cb355.mp4"
+      />
+      <ExampleItem
+        title="UI opening animation"
+        desc="Opening animation for almost every item, clean and cool"
+        vid="https://satixxgg.github.io/SatixXGG-portfolio-react/static/media/dynamic-ui.836888bece626e9abcca.mp4"
+      />
+
+      <ExampleItem
+        title="PVP&PVE game"
+        desc="(ONLY SCRIPTING) Advanced melee system, inventory, shop, and squad system"
+        vid="https://satixxgg.github.io/SatixXGG-portfolio-react/static/media/pvp-system.bdfcbf3b640cda41f3a2.mp4"
+      />
     </div>
   </main>
 
@@ -22,24 +52,23 @@ import Layout from "../layouts/Layout.astro";
   const videos = document.querySelectorAll("#videoPlayer");
 
   videos.forEach((currentVideo) => {
-      const playButton = currentVideo.querySelector("#buttonPlay");
-      const buttonPause = currentVideo.querySelector("#buttonPause");
-      const coreVideo = currentVideo.querySelector("#coreVid");
+    const playButton = currentVideo.querySelector("#buttonPlay");
+    const buttonPause = currentVideo.querySelector("#buttonPause");
+    const coreVideo = currentVideo.querySelector("#coreVid");
+    coreVideo.volume = 0;
+    buttonPause.style.visibility = "hidden";
 
+    playButton.addEventListener("click", function (e) {
+      coreVideo.play();
+      playButton.style.visibility = "hidden";
+      buttonPause.style.visibility = "visible";
+    });
+
+    buttonPause.addEventListener("click", function (e) {
+      coreVideo.pause();
+      playButton.style.visibility = "visible";
       buttonPause.style.visibility = "hidden";
-
-      console.log(coreVideo);
-      playButton.addEventListener("click", function (e) {
-          coreVideo.play();
-          playButton.style.visibility = "hidden";
-          buttonPause.style.visibility = "visible";
-      });
-
-      buttonPause.addEventListener("click", function (e) {
-          coreVideo.pause();
-          playButton.style.visibility = "visible";
-          buttonPause.style.visibility = "hidden";
-      });
+    });
   });
   </script>
 </Layout>
