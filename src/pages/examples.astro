@@ -6,7 +6,7 @@ import Layout from "../layouts/Layout.astro";
 
 <Layout title="SatixXGG Home">
   <NavBar />
-  <main class="flex flex-col items-center py-40">
+  <main class="flex flex-col items-center py-40 mt-5">
     <div class="grid md:grid-cols-3 grid-cols-1 w-full h-full px-9 md:px-16">
       <ExampleItem
         title="Dynamic Arms optimized"
@@ -48,28 +48,32 @@ import Layout from "../layouts/Layout.astro";
     </div>
   </main>
 
-  <script is:inline>
-  const videos = document.querySelectorAll("#videoPlayer");
+  <script>
+    // Import npm modules.
 
-  videos.forEach((currentVideo) => {
-    const playButton = currentVideo.querySelector("#buttonPlay");
-    const buttonPause = currentVideo.querySelector("#buttonPause");
-    const coreVideo = currentVideo.querySelector("#coreVid");
-    coreVideo.volume = 0;
-    buttonPause.style.visibility = "hidden";
+    // some comment
 
-    playButton.addEventListener("click", function (e) {
-      coreVideo.play();
-      playButton.style.visibility = "hidden";
-      buttonPause.style.visibility = "visible";
-    });
-
-    buttonPause.addEventListener("click", function (e) {
-      coreVideo.pause();
-      playButton.style.visibility = "visible";
+    var videos = document.querySelectorAll("#videoPlayer");
+    videos.forEach((currentVideo) => {
+      const playButton = currentVideo.querySelector("#buttonPlay");
+      const buttonPause = currentVideo.querySelector("#buttonPause");
+      const coreVideo = currentVideo.querySelector("#coreVid");
+      coreVideo.volume = 0;
       buttonPause.style.visibility = "hidden";
+
+      playButton.addEventListener("click", function (e) {
+        coreVideo.play();
+
+        playButton.style.visibility = "hidden";
+        buttonPause.style.visibility = "visible";
+      });
+
+      buttonPause.addEventListener("click", function (e) {
+        coreVideo.pause();
+        playButton.style.visibility = "visible";
+        buttonPause.style.visibility = "hidden";
+      });
     });
-  });
   </script>
 </Layout>
 
