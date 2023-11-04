@@ -176,8 +176,8 @@ import Layout from "../layouts/Layout.astro";
         if (coreVideo.readyState >= 4) {
           waitForElm("#loader").then((loader) => {
             loader.style.visibility = "hidden";
+            clearInterval(check);
           });
-          clearInterval(check);
         }
       }, 500);
     });
