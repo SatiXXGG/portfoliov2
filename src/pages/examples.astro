@@ -105,6 +105,7 @@ import Layout from "../layouts/Layout.astro";
         desc="Optimized weather system client"
         vid="https://cdn.discordapp.com/attachments/826501659391688715/1170470079436181564/2023-11-04_15-09-26.mp4?ex=65592835&is=6546b335&hm=30c5af91d5ac5a06d32671c171cd38d8d33467b69ee40bcb93f6c218db7059b9&"
       />
+
       <ExampleItem
         title="Cartoon weapon system"
         desc="Weapon system with features like glass breaking"
@@ -120,6 +121,26 @@ import Layout from "../layouts/Layout.astro";
 
     var videos = document.querySelectorAll("#videoPlayer");
     videos.forEach((currentVideo) => {
+      function waitForElm(selector) {
+        return new Promise((resolve) => {
+          if (currentVideo.querySelector(selector)) {
+            return resolve(currentVideo.querySelector(selector));
+          }
+
+          const observer = new MutationObserver((mutations) => {
+            if (currentVideo.querySelector(selector)) {
+              observer.disconnect();
+              resolve(currentVideo.querySelector(selector));
+            }
+          });
+
+          observer.observe(document.body, {
+            childList: true,
+            subtree: true,
+          });
+        });
+      }
+
       const playButton = currentVideo.querySelector("#buttonPlay");
       const buttonPause = currentVideo.querySelector("#buttonPause");
       const coreVideo = currentVideo.querySelector("#coreVid");
@@ -131,13 +152,34 @@ import Layout from "../layouts/Layout.astro";
 
         playButton.style.visibility = "hidden";
         buttonPause.style.visibility = "visible";
+
+        if (coreVideo.readyState >= 4) {
+          waitForElm("#loader").then((loader) => {
+            loader.style.visibility = "hidden";
+          });
+        }
       });
 
       buttonPause.addEventListener("click", function (e) {
         coreVideo.pause();
         playButton.style.visibility = "visible";
         buttonPause.style.visibility = "hidden";
+
+        if (coreVideo.readyState >= 4) {
+          waitForElm("#loader").then((loader) => {
+            loader.style.visibility = "hidden";
+          });
+        }
       });
+
+      var check = setInterval(() => {
+        if (coreVideo.readyState >= 4) {
+          waitForElm("#loader").then((loader) => {
+            loader.style.visibility = "hidden";
+          });
+          clearInterval(check);
+        }
+      }, 500);
     });
   </script>
 </Layout>
