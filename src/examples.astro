@@ -1,0 +1,96 @@
+---
+import ExampleItem from "../components/exampleItem.astro";
+import NavBar from "../components/nav-bar.astro";
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="SatixXGG Home">
+  <NavBar />
+  <main class="flex flex-col items-center py-40 mt-5">
+    <div class="grid md:grid-cols-3 grid-cols-1 w-full h-full px-9 md:px-16">
+      <ExampleItem
+        title="Dynamic Arms optimized"
+        desc="Dynamic moving arms and head Using IK and Motor6D"
+        vid="https://satixxgg.github.io/SatixXGG-portfolio-react/static/media/arms-video.ca8415911ebfb6ff2524.mp4"
+      />
+      <ExampleItem
+        title="Rounded menu style"
+        desc="Rounded menu with 4 options that can open by clicking it"
+        vid="https://satixxgg.github.io/SatixXGG-portfolio-react/static/media/round-menu.3202a3da2faaa7a0ad06.mp4"
+      />
+      <ExampleItem
+        title="Interaction system"
+        desc="Advanced customizable interaction system with cooldown"
+        vid="https://satixxgg.github.io/SatixXGG-portfolio-react/static/media/int-system.b8901d8ad465712225e9.mp4"
+      />
+
+      <ExampleItem
+        title="GTA Style menu"
+        desc="Advanced customizable GTA menu with options to change everything"
+        vid="https://satixxgg.github.io/SatixXGG-portfolio-react/static/media/gta-menu.fb07a4bcabe0abd7176b.mp4"
+      />
+      <ExampleItem
+        title="Dynamic stamina bar"
+        desc="Advanced and dynamic stamina bar like Genshin Impact game"
+        vid="https://satixxgg.github.io/SatixXGG-portfolio-react/static/media/stamina-bar.7bc10d61f7b89c2cb355.mp4"
+      />
+      <ExampleItem
+        title="UI opening animation"
+        desc="Opening animation for almost every item, clean and cool"
+        vid="https://satixxgg.github.io/SatixXGG-portfolio-react/static/media/dynamic-ui.836888bece626e9abcca.mp4"
+      />
+
+      <ExampleItem
+        title="PVP&PVE game"
+        desc="(ONLY SCRIPTING) Advanced melee system, inventory, shop, and squad system"
+        vid="https://satixxgg.github.io/SatixXGG-portfolio-react/static/media/pvp-system.bdfcbf3b640cda41f3a2.mp4"
+      />
+    </div>
+  </main>
+
+  <script>
+    // Import npm modules.
+
+    // some comment
+
+    var videos = document.querySelectorAll("#videoPlayer");
+    videos.forEach((currentVideo) => {
+      const playButton = currentVideo.querySelector("#buttonPlay");
+      const buttonPause = currentVideo.querySelector("#buttonPause");
+      const coreVideo = currentVideo.querySelector("#coreVid");
+      coreVideo.volume = 0;
+      buttonPause.style.visibility = "hidden";
+
+      playButton.addEventListener("click", function (e) {
+        coreVideo.play();
+
+        playButton.style.visibility = "hidden";
+        buttonPause.style.visibility = "visible";
+      });
+
+      buttonPause.addEventListener("click", function (e) {
+        coreVideo.pause();
+        playButton.style.visibility = "visible";
+        buttonPause.style.visibility = "hidden";
+      });
+    });
+  </script>
+</Layout>
+
+<style is:global>
+  body {
+    font-family:
+      system-ui,
+      -apple-system,
+      BlinkMacSystemFont,
+      "Segoe UI",
+      Roboto,
+      Oxygen,
+      Ubuntu,
+      Cantarell,
+      "Open Sans",
+      "Helvetica Neue",
+      sans-serif;
+    background-color: rgb(33, 33, 33);
+  }
+</style>

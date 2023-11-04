@@ -1,0 +1,57 @@
+---
+import NavBar from "../components/nav-bar.astro";
+import Layout from "../layouts/Layout.astro";
+import QrImage from "../assets/qr.png";
+import { Image } from "astro:assets";
+import LinkButton from "../components/link-button.astro";
+---
+
+<Layout title="SatixXGG payment">
+  <NavBar />
+  <main class="flex flex-col items-center py-40 mt-10">
+    <h3 class="text-white text-2xl font-bold py3">Scan this code:</h3>
+    <Image class="w-60 md:w-96" src={QrImage} alt="payment image" />
+    <h3 class="text-white text-2xl font-bold py3 mb-5">Or click this link:</h3>
+    <LinkButton link="https://paypal.me/satixx2022?country.x=MX&locale.x=es_XC">
+      Paypal
+
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="icon icon-tabler icon-tabler-brand-paypal"
+        width="30"
+        height="30"
+        slot="before"
+        viewBox="0 0 24 24"
+        stroke-width="2"
+        stroke="currentColor"
+        fill="none"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+        <path
+          d="M10 13l2.5 0c2.5 0 5 -2.5 5 -5c0 -3 -1.9 -5 -5 -5h-5.5c-.5 0 -1 .5 -1 1l-2 14c0 .5 .5 1 1 1h2.8l1.2 -5c.1 -.6 .4 -1 1 -1zm7.5 -5.8c1.7 1 2.5 2.8 2.5 4.8c0 2.5 -2.5 4.5 -5 4.5h-2.6l-.6 3.6a1 1 0 0 1 -1 .8l-2.7 0a.5 .5 0 0 1 -.5 -.6l.2 -1.4"
+        ></path>
+      </svg>
+    </LinkButton>
+  </main>
+
+  <style is:global>
+    body {
+      font-family:
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Oxygen,
+        Ubuntu,
+        Cantarell,
+        "Open Sans",
+        "Helvetica Neue",
+        sans-serif;
+
+      background-color: rgb(33, 33, 33);
+    }
+  </style>
+</Layout>

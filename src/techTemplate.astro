@@ -1,0 +1,21 @@
+---
+import { Image } from "astro:assets";
+interface Props {
+  main: string;
+  description: string;
+  source: any;
+}
+const { main, description, source } = Astro.props;
+---
+
+<div
+  class="bg-zinc-900 h-auto md:h-80 rounded-3xl px-12 py-6 text-white mt-5 w-80 md:w-[26vw] m-auto transition-all ease-in-out duration-300 hover:scale-105 hover:shadow-md hover:bg-indigo-900 hover:cursor-pointer"
+>
+  <h1 class="text-3xl font-bold">{main}</h1>
+  <p class="text-lg">{description}</p>
+  <Image
+    src={source}
+    alt="Tech image"
+    class="rounded-2xl w-56 h-32 object-cover mt-2 md:w-96 md:h-44 md:mx-auto"
+  />
+</div>
