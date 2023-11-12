@@ -8,7 +8,7 @@ import LinkButton from "../components/link-button.astro";
 
 <Layout title="SatixXGG Home">
   <NavBar />
-  <main class="flex flex-col items-center py-40">
+  <main class="flex flex-col items-center mb-12">
     <div
       class="flex flex-col w-[70vw] md:h-64 outline-1 outline-green-500 outline rounded-3xl md:w-[50vw] md:mt-0 mt-12"
     >
@@ -156,6 +156,36 @@ import LinkButton from "../components/link-button.astro";
       </LinkButton>
     </footer>
   </main>
+
+  <script>
+    import { initializeApp } from "firebase/app";
+    import { onAuthStateChanged } from "firebase/auth";
+    import { getAuth } from "firebase/auth";
+    const firebaseConfig = {
+      apiKey: "AIzaSyA8QmYfTC6v5T1UZpqxarSExNWXZ9ahKDA",
+      authDomain: "portfolio-7a5f5.firebaseapp.com",
+      projectId: "portfolio-7a5f5",
+      storageBucket: "portfolio-7a5f5.appspot.com",
+      messagingSenderId: "198869603584",
+      appId: "1:198869603584:web:85d2b2c5091f28737e4fe5",
+      measurementId: "G-PQWQB1D72S",
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    let imageElement = document.getElementById("userImg");
+    let logOut = document.getElementById("logOut");
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        imageElement.src = user.photoURL;
+        logOut.visibility = "visible";
+      } else {
+        console.log("out");
+        logOut.visibility = "hidden";
+      }
+    });
+  </script>
 </Layout>
 
 <style is:global>

@@ -8,7 +8,7 @@ import LinkButton from "../components/link-button.astro";
 
 <Layout title="SatixXGG payment">
   <NavBar />
-  <main class="flex flex-col items-center py-40 mt-10">
+  <main class="flex flex-col items-center mt-10">
     <h3 class="text-white text-2xl font-bold py3">Scan this code:</h3>
     <Image class="w-60 md:w-96" src={QrImage} alt="payment image" />
     <h3 class="text-white text-2xl font-bold py3 mb-5">Or click this link:</h3>
@@ -54,4 +54,34 @@ import LinkButton from "../components/link-button.astro";
       background-color: rgb(33, 33, 33);
     }
   </style>
+
+  <script>
+    import { initializeApp } from "firebase/app";
+    import { onAuthStateChanged } from "firebase/auth";
+    import { getAuth } from "firebase/auth";
+    const firebaseConfig = {
+      apiKey: "AIzaSyA8QmYfTC6v5T1UZpqxarSExNWXZ9ahKDA",
+      authDomain: "portfolio-7a5f5.firebaseapp.com",
+      projectId: "portfolio-7a5f5",
+      storageBucket: "portfolio-7a5f5.appspot.com",
+      messagingSenderId: "198869603584",
+      appId: "1:198869603584:web:85d2b2c5091f28737e4fe5",
+      measurementId: "G-PQWQB1D72S",
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    let imageElement = document.getElementById("userImg");
+    let logOut = document.getElementById("logOut");
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        imageElement.src = user.photoURL;
+        logOut.visibility = "visible";
+      } else {
+        console.log("out");
+        logOut.visibility = "hidden";
+      }
+    });
+  </script>
 </Layout>
